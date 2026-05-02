@@ -1,0 +1,12 @@
+django
+pillow
+psycopg2
+django_redis
+python-dotenv
+drf-spectacular
+psycopg2-binary
+django_ratelimit
+django-cors-headers
+djangorestframework
+django-debug-toolbar
+djangorestframework-simplejwt
