@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
                 ('email', models.EmailField(error_messages={'unique': 'A user with this email already exists.'}, max_length=254, unique=True, verbose_name='email address')),
-                ('id', models.CharField(default=utils.utils.generate_uuid_hex, editable=False, max_length=255, primary_key=True, serialize=False)),
+                ('id', models.CharField(default=utils.utils.generate_ids, editable=False, max_length=255, primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=100, verbose_name='full name')),
                 ('gender', models.CharField(choices=[('male', 'Male'), ('female', 'Female'), ('others', 'Others')], max_length=6, verbose_name='gender')),
                 ('dob', models.DateField(blank=True, null=True, verbose_name='date of birth')),
