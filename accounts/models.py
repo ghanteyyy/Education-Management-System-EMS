@@ -64,7 +64,7 @@ class CustomUser(AbstractUser):
                 }
             )
 
-    id = models.CharField(primary_key=True, editable=False, default=utils.generate_uuid_hex, max_length=255)
+    id = models.CharField(primary_key=True, editable=False, default=utils.generate_ids, max_length=255)
 
     # --- User Details ---
     name = models.CharField(
