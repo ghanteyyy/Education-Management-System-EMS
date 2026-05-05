@@ -68,7 +68,7 @@ class Event(models.Model):
 
 class Event_Image(models.Model):
     id = models.CharField(max_length=64, primary_key=True, default=utils.generate_ids)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='notices')
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='event_images')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='images')
 
     image_url = models.CharField(max_length=255)
