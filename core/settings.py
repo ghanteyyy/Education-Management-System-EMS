@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'accounts',
+    'Academics',
+    'Contacts',
+    'Employees',
+    'Organizations',
+    'Students',
 ]
 
 if DEBUG:
