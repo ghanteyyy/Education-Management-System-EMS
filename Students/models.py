@@ -23,7 +23,7 @@ class Student(models.Model):
     name = models.CharField(max_length=255)
     dob = models.DateField()
     password = models.CharField(max_length=255)
-    gender = models.ForeignKey(Gender_Type, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=10, choices=Gender_Type.choices)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
