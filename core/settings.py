@@ -108,8 +108,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Online Entrance Preparation API',
-    'DESCRIPTION': 'API documentation for the Online Entrance Preparation System',
+    'TITLE': 'Education Management System (EMS) API',
+    'DESCRIPTION': 'API documentation for the Education Management System (EMS)',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True,
