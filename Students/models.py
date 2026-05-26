@@ -3,6 +3,7 @@ from django.contrib.auth.hashers import make_password
 from Organizations.models import Organization, Academic_Year
 from Employees.models import Gender_Type
 from Contacts.models import Contact
+from accounts.models import CustomUser
 from utils import utils
 
 
@@ -16,13 +17,13 @@ class Relationship_Type(models.TextChoices):
 
 class Student(models.Model):
     id = models.CharField(max_length=64, primary_key=True, default=utils.generate_ids, editable=False)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='students')
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     academic_year = models.ForeignKey(Academic_Year, on_delete=models.CASCADE)
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=255)
     dob = models.DateField()
-    password = models.CharField(max_length=255)
     gender = models.CharField(max_length=10, choices=Gender_Type.choices)
 
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,14 +1,15 @@
 from utils import utils
 from django.db import models
+from accounts.models import CustomUser
 from django.contrib.auth.hashers import make_password
 
 
 class Organization(models.Model):
     id = models.CharField(max_length=64, primary_key=True, default=utils.generate_ids)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='organizations')
 
     name = models.CharField(max_length=255)
     abbr = models.CharField(max_length=10)
-    password = models.CharField(max_length=255)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

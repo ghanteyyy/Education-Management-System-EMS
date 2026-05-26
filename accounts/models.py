@@ -50,12 +50,19 @@ class CustomUserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
+class UserRole(models.TextChoices):
+    ORGANIZATION = "organization", "Organization"
+    STUDENT = "student", "Student"
+    STAFF = "staff", "Staff"
+
+
 class CustomUser(AbstractUser):
     '''
     Custom user model representing an individual user.
     '''
-    # --- Authentication Fields ---
+
     username = None
+    id = models.CharField(primary_key=True, editable=False, default=utils.generate_ids, max_length=255)
     email = models.EmailField(
                 verbose_name=_('email address'),
                 unique=True,
@@ -64,35 +71,8 @@ class CustomUser(AbstractUser):
                 }
             )
 
-    id = models.CharField(primary_key=True, editable=False, default=utils.generate_ids, max_length=255)
+    role = models.CharField(max_length=20, choices=UserRole.choices)
 
-    # --- User Details ---
-    name = models.CharField(
-                verbose_name=_("full name"),
-                max_length=100, null=False, blank=False
-            )
-
-    gender = models.CharField(
-                verbose_name=_('gender'),
-                max_length=6, null=False, blank=False,
-                choices=[
-                    ("male", _("Male")),
-                    ("female", _("Female")),
-                    ("others", _("Others")),
-                ]
-            )
-
-    dob = models.DateField(
-                        verbose_name=_('date of birth'),
-                        null=True, blank=True
-                    )
-
-    profile_image = models.ImageField(
-                        default='default.png',
-                        verbose_name=_('profile image'),
-                        blank=True, null=True, max_length=255,
-                        upload_to=utils.user_profile_path
-                    )
 
     # --- Auth Settings ---
     USERNAME_FIELD = 'email'  # Use email for auth

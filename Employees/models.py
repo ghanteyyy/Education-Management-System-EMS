@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.hashers import make_password
 from Organizations.models import Organization
+from accounts.models import CustomUser
 from utils import utils
 
 
@@ -20,6 +21,7 @@ class Gender_Type(models.TextChoices):
 class Employee(models.Model):
     id = models.CharField(max_length=64, primary_key=True, default=utils.generate_ids, editable=False)
 
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='employees')
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='employees')
 
     name = models.CharField(max_length=255)
