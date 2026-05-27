@@ -25,9 +25,7 @@ class Employee(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='employees')
 
     name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
     dob = models.DateField()
-    password = models.CharField(max_length=255)
     gender = models.CharField(max_length=10, choices=Gender_Type.choices)
     employee_type = models.CharField(max_length=20, choices=Employee_Type.choices)
 
