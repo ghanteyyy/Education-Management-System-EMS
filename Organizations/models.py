@@ -1,7 +1,6 @@
 from utils import utils
 from django.db import models
 from accounts.models import CustomUser
-from django.contrib.auth.hashers import make_password
 
 
 class Organization(models.Model):
@@ -13,12 +12,6 @@ class Organization(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def save(self, *args, **kwargs):
-        if not self.password.startswith('pbkdf2_sha256$'):
-            self.password = make_password(self.password)
-
-        super().save(*args, **kwargs)
 
 
 class Academic_Year(models.Model):
